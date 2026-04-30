@@ -16,7 +16,7 @@ export function ProductEnquiry({ productName }: ProductEnquiryProps) {
 
     const handleWhatsAppSubmit = (e: React.FormEvent) => {
         e.preventDefault();
-        const phoneNumber = '919651497211';
+        const phoneNumber = '+916390901876';
         const text = `Hello, my name is ${name}.
 I am interested in this product: ${productName}
 

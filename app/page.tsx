@@ -10,6 +10,7 @@ import { getProducts } from '@/services/product.service';
 import { ProductSection } from '@/components/products/ProductSection';
 import { AsyncProductSection } from '@/components/products/AsyncProductSection';
 import { HomeTestimonialSection } from '@/components/home/HomeTestimonialSection';
+import { FloatingButtons } from '@/components/home/FloatingButtons';
 
 export default async function Home() {
   const businessSchema = getLocalBusinessSchema();
@@ -185,6 +186,7 @@ export default async function Home() {
         />
       </main>
       <Footer />
+      <FloatingButtons />
     </>
   );
 }
