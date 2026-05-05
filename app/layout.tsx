@@ -83,6 +83,7 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "../styles/globals.css";
 import { cn } from "@/lib/utils";
 import { GlobalTracking } from "@/components/GlobalTracking";
+import LocalBusinessSchema from "@/components/LocalBusinessSchema";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
@@ -171,46 +172,6 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "JewelryStore",
-    name: "VCJ Jewellers",
-    image: "https://vcjjewellers.com/images/og-jewellery.jpg",
-    url: "https://vcjjewellers.com",
-    telephone: "+916390901876",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: "Sadbhavna Bridge Mod, Nakhas",
-      addressLocality: "Jaunpur",
-      addressRegion: "Uttar Pradesh",
-      postalCode: "222001",
-      addressCountry: "IN",
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: "25.7464",
-      longitude: "82.6837",
-    },
-    openingHoursSpecification: [
-      {
-        "@type": "OpeningHoursSpecification",
-        dayOfWeek: [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday",
-          "Saturday",
-        ],
-        opens: "10:00",
-        closes: "20:00",
-      },
-    ],
-    sameAs: [
-      "https://www.instagram.com/vimalchhaganlaljewelers/?hl=en",
-      "https://www.facebook.com/profile.php?id=100016570952719#"
-    ],
-  };
 
   return (
     <html lang="en" className="scroll-smooth">
@@ -241,10 +202,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
           />
         </noscript>
         {/* Schema Markup for Google Rich Results */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <LocalBusinessSchema />
 
         {/* Global Event Tracking */}
         <GlobalTracking />
