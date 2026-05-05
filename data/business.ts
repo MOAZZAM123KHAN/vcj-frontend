@@ -30,7 +30,7 @@ export const BUSINESS_INFO = {
         "100% Return on Old Jewellery",
         "Free Testing",
         "Lifetime Free Repair",
-        "10+2 EMI Scheme",
+        "11+1 EMI Scheme",
         "Rate Booking Offer"
     ]
 };

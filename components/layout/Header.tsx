@@ -163,6 +163,10 @@ export function Header() {
         e.preventDefault();
         const phone = BUSINESS_INFO.contact.phone.replace(/\D/g, '');
         const text = `*New Order/Visit Enquiry*\n\n*Name:* ${name}\n*Message:* ${message}`;
+        
+        (window as any).dataLayer = (window as any).dataLayer || [];
+        (window as any).dataLayer.push({ event: 'whatsapp_click' });
+
         window.open(`https://wa.me/${phone}?text=${encodeURIComponent(text)}`, '_blank');
         setIsModalOpen(false);
         setName('');
