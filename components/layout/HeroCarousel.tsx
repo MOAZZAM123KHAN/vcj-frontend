@@ -313,9 +313,11 @@ export function HeroCarousel() {
                             src={slides[current].image}
                             alt={slides[current].subtitle}
                             fill
-                            sizes="100vw"
+                            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 1400px"
                             quality={85}
-                            priority
+                            priority={true}
+                            placeholder="blur"
+                            blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/wAARCAAKABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAABgUE/8QAIhAAAgIBBAMBAAAAAAAAAAAAAQIDBAUREiFBUf/EABQBAQAAAAAAAAAAAAAAAAAAAAD/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwAt19ma5btSRtJIzMzMzNjmdiW2XOc8nOScknJPPJPJ8DAILNaKaMxyoHXxgg//2Q=="
                             className="object-cover opacity-70 animate-slow-zoom"
                         />
                         <div className="absolute inset-0 bg-gradient-to-b from-slate-950/40 via-transparent to-slate-950/80" />

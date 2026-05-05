@@ -11,6 +11,7 @@ import { ProductSection } from '@/components/products/ProductSection';
 import { AsyncProductSection } from '@/components/products/AsyncProductSection';
 import { HomeTestimonialSection } from '@/components/home/HomeTestimonialSection';
 import { FloatingButtons } from '@/components/home/FloatingButtons';
+import TrustBar from "@/components/TrustBar";
 
 export default async function Home() {
   const businessSchema = getLocalBusinessSchema();
@@ -23,6 +24,7 @@ export default async function Home() {
       <Header />
       <main className="flex-1">
         <HeroCarousel />
+        <TrustBar />
 
         {/* Trending Products */}
         <AsyncProductSection

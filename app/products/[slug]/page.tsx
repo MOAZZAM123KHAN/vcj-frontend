@@ -3,6 +3,7 @@ import { Footer } from '@/components/layout/Footer';
 import { getProductBySlug, getProducts } from '@/services/product.service';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import Script from 'next/script';
 import { Button } from '@/components/ui/button';
 import { Heart, Share2, ShieldCheck, Truck, RefreshCw, Star } from 'lucide-react';
 import { Metadata } from 'next';
@@ -20,14 +21,35 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     const { slug } = await params;
     try {
         const { data: product } = await getProductBySlug(slug);
-        if (!product) return { title: 'Product Not Found' };
+        if (!product) return { title: 'Product Not Found | VCJ Jewellers' };
+
+        const url = `https://vcjjewellers.com/products/${slug}`;
+        const title = `${product.name} | VCJ Jewellers Jaunpur`;
+        const description = product.description || `Buy ${product.name} at VCJ Jewellers. Premium ${product.material} jewellery available at our Nakhas, Jaunpur showroom.`;
+        const image = product.imageUrls?.[0] || '/images/og-jewellery.jpg';
 
         return {
-            title: `${product.name} | VCJ Jewellers`,
-            description: product.description,
+            title,
+            description,
+            alternates: {
+                canonical: url,
+            },
+            openGraph: {
+                title,
+                description,
+                url,
+                siteName: "VCJ Jewellers",
+                images: [{ url: image, width: 1200, height: 630 }],
+            },
+            twitter: {
+                card: "summary_large_image",
+                title,
+                description,
+                images: [image],
+            },
         };
     } catch (e) {
-        return { title: 'Product Not Found' };
+        return { title: 'Product Not Found | VCJ Jewellers' };
     }
 }
 
@@ -80,8 +102,68 @@ async function Recommendations({ currentProduct }: { currentProduct: any }) {
 }
 
 function Content({ product, hasDiscount, displayImage }: { product: any, hasDiscount: boolean, displayImage: string }) {
+    const url = `https://vcjjewellers.com/products/${product.slug}`;
+    
+    const productSchema = {
+        "@context": "https://schema.org/",
+        "@type": "Product",
+        "name": product.name,
+        "image": product.imageUrls?.[0] || "",
+        "description": product.description || `Buy ${product.name} at VCJ Jewellers.`,
+        "sku": product.slug,
+        "brand": {
+            "@type": "Brand",
+            "name": "VCJ Jewellers"
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": url,
+            "priceCurrency": "INR",
+            "price": product.price || 0,
+            "availability": "https://schema.org/InStock",
+            "itemCondition": "https://schema.org/NewCondition"
+        }
+    };
+
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://vcjjewellers.com"
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Collections",
+                "item": "https://vcjjewellers.com/products"
+            },
+            {
+                "@type": "ListItem",
+                "position": 3,
+                "name": product.name,
+                "item": url
+            }
+        ]
+    };
+
     return (
         <>
+            <Script
+                id="product-schema"
+                type="application/ld+json"
+                strategy="lazyOnload"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(productSchema) }}
+            />
+            <Script
+                id="breadcrumb-schema"
+                type="application/ld+json"
+                strategy="lazyOnload"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+            />
             <Header />
             <main className="min-h-screen bg-white">
                 <div className="container mx-auto px-4 py-20">
@@ -117,12 +199,20 @@ function Content({ product, hasDiscount, displayImage }: { product: any, hasDisc
 
                         {/* Product Info - Elegant & Narrative */}
                         <div className="flex flex-col pt-4">
-                            <nav className="flex items-center gap-3 text-[10px] font-bold tracking-widest uppercase text-slate-400 mb-10">
-                                <Link href="/" className="hover:text-yellow-700 transition-colors">Home</Link>
-                                <span className="text-slate-200">/</span>
-                                <Link href="/products" className="hover:text-yellow-700 transition-colors">Collections</Link>
-                                <span className="text-slate-200">/</span>
-                                <span className="text-slate-900">{product.name}</span>
+                            <nav aria-label="Breadcrumb" className="mb-10">
+                                <ol className="flex items-center gap-3 text-[10px] font-bold tracking-widest uppercase text-slate-400">
+                                    <li>
+                                        <Link href="/" className="hover:text-yellow-700 transition-colors">Home</Link>
+                                    </li>
+                                    <li className="text-slate-200" aria-hidden="true">/</li>
+                                    <li>
+                                        <Link href="/products" className="hover:text-yellow-700 transition-colors">Collections</Link>
+                                    </li>
+                                    <li className="text-slate-200" aria-hidden="true">/</li>
+                                    <li className="text-slate-900" aria-current="page">
+                                        {product.name}
+                                    </li>
+                                </ol>
                             </nav>
 
                             <div className="mb-6">

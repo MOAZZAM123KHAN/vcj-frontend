@@ -89,83 +89,52 @@ const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vcjjewellers.com"),
-
+  metadataBase: new URL('https://vcjjewellers.com'),
   title: {
-    default: "VCJ Jewellers – Best Jewellery Shop in Jaunpur Since 1960",
-    template: "%s | VCJ Jewellers",
+    default: 'VCJ Jewellers – Best Jewellery Shop in Jaunpur Since 1960',
+    template: '%s | VCJ Jewellers'
   },
-
-  description:
-    "VCJ Jewellers (Vimal Chhaganlal Jewellers) – Trusted jewellery shop in Jaunpur since 1960. Premium Gold, Silver, Diamond & Bridal Jewellery. Visit our showroom near Sadbhavna Bridge, Nakhas Jaunpur.",
-
-  keywords: [
-    "VCJ Jewellers",
-    "Jewellery shop in Jaunpur",
-    "Best jeweller in Jaunpur",
-    "Gold jewellery shop Jaunpur",
-    "Diamond jewellery Jaunpur",
-    "Bridal jewellery Jaunpur",
-    "Jewellery shop Nakhas Jaunpur",
-    "Gold jewellery near Sadbhavna Bridge",
-    "Trusted jeweller Jaunpur since 1960",
-    "Gold shop near me Jaunpur",
-    "Best jewellery store Jaunpur UP"
-  ],
-
-  authors: [{ name: "VCJ Jewellers" }],
-  creator: "VCJ Jewellers",
-  publisher: "VCJ Jewellers",
-
-  formatDetection: {
-    email: false,
-    address: false,
-    telephone: false,
+  description: 'VCJ Jewellers (Vimal Chhaganlal Jewellers) – Trusted jewellery shop in Jaunpur since 1960. Premium Gold, Silver, Diamond & Bridal Jewellery. Visit our showroom near Sadbhavna Bridge, Nakhas Jaunpur.',
+  alternates: {
+    canonical: '/',
   },
-
   openGraph: {
-    title: "VCJ Jewellers – Premium Gold & Diamond Jewellery in Jaunpur",
-    description:
-      "Explore premium gold, silver and diamond jewellery at VCJ Jewellers. Trusted by families in Jaunpur since 1960.",
-    url: "https://vcjjewellers.com",
-    siteName: "VCJ Jewellers",
-    locale: "en_IN",
-    type: "website",
-
+    type: 'website',
+    locale: 'en_IN',
+    url: 'https://vcjjewellers.com',
+    siteName: 'VCJ Jewellers',
+    title: 'VCJ Jewellers – Best Jewellery Shop in Jaunpur Since 1960',
+    description: 'Trusted jewellery shop in Jaunpur since 1960. Premium Gold, Silver, Diamond & Bridal Jewellery.',
     images: [
       {
-        url: "/images/og-jewellery.jpg",
+        url: '/images/og-jewellery.jpg',
         width: 1200,
         height: 630,
-        alt: "VCJ Jewellers Jaunpur",
-      },
+        alt: 'VCJ Jewellers Jaunpur',
+      }
     ],
   },
-
   twitter: {
-    card: "summary_large_image",
-    title: "VCJ Jewellers – Premium Jewellery Store in Jaunpur",
-    description:
-      "Gold, Silver & Diamond Jewellery. Trusted since 1960. Visit our showroom in Nakhas Jaunpur.",
-    images: ["/images/og-jewellery.jpg"],
+    card: 'summary_large_image',
+    title: 'VCJ Jewellers – Premium Jewellery Store in Jaunpur',
+    description: 'Gold, Silver & Diamond Jewellery. Trusted since 1960. Visit our showroom in Nakhas Jaunpur.',
+    images: ['/images/og-jewellery.jpg'],
   },
-
   robots: {
     index: true,
     follow: true,
     googleBot: {
       index: true,
       follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
     },
   },
-
-  alternates: {
-    canonical: "https://vcjjewellers.com",
+  verification: {
+    google: 'PASTE_GSC_CODE_HERE',
   },
-};
+}
 
 export default function RootLayout({
   children,
