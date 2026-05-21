@@ -1,16 +1,17 @@
-import Link from 'next/link';
 import { getGoldRate } from '@/services/gold-rate.service';
-import { Button } from '@/components/ui/button';
-import { ChevronRight } from 'lucide-react';
 
 export async function HomeGoldRateSection() {
-  const rateData = await getGoldRate();
+  const response = await getGoldRate();
   
-  if (!rateData || !rateData.rates) {
-    return null; // Fallback if rates cannot be fetched
-  }
+  const rates = response?.data || {
+      gold24k: 7200,
+      gold22k: 6600,
+      gold18k: 5400,
+  };
 
-  const { rate18k, rate22k, rate24k, lastUpdated } = rateData.rates;
+  const { gold18k, gold22k, gold24k } = rates;
+  
+  const updatedAt = response?.data?.updatedAt;
   
   const formattedDate = new Intl.DateTimeFormat('en-IN', {
     day: 'numeric',
@@ -18,7 +19,7 @@ export async function HomeGoldRateSection() {
     year: 'numeric',
     hour: '2-digit',
     minute: '2-digit',
-  }).format(new Date(lastUpdated));
+  }).format(updatedAt ? new Date(updatedAt) : new Date());
 
   return (
     <section className="py-16 md:py-24 bg-white relative">
@@ -41,7 +42,7 @@ export async function HomeGoldRateSection() {
           {/* 18K Card */}
           <div className="bg-slate-50 border border-slate-100 rounded-2xl p-8 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <h3 className="text-lg font-bold text-slate-500 mb-2 uppercase tracking-widest">18K Gold Rate</h3>
-            <p className="text-3xl font-serif font-bold text-slate-900">₹{rate18k?.toLocaleString('en-IN')}</p>
+            <p className="text-3xl font-serif font-bold text-slate-900">₹{gold18k?.toLocaleString('en-IN')}</p>
             <p className="text-xs text-slate-400 mt-2">per gram</p>
           </div>
 
@@ -51,39 +52,20 @@ export async function HomeGoldRateSection() {
               Most Popular
             </div>
             <h3 className="text-lg font-bold text-yellow-700 mb-2 uppercase tracking-widest">22K Gold Rate</h3>
-            <p className="text-4xl font-serif font-bold text-slate-900">₹{rate22k?.toLocaleString('en-IN')}</p>
+            <p className="text-4xl font-serif font-bold text-slate-900">₹{gold22k?.toLocaleString('en-IN')}</p>
             <p className="text-xs text-slate-500 mt-2">per gram</p>
           </div>
 
           {/* 24K Card */}
           <div className="bg-slate-50 border border-slate-100 rounded-2xl p-8 text-center transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
             <h3 className="text-lg font-bold text-slate-500 mb-2 uppercase tracking-widest">24K Gold Rate</h3>
-            <p className="text-3xl font-serif font-bold text-slate-900">₹{rate24k?.toLocaleString('en-IN')}</p>
+            <p className="text-3xl font-serif font-bold text-slate-900">₹{gold24k?.toLocaleString('en-IN')}</p>
             <p className="text-xs text-slate-400 mt-2">per gram</p>
           </div>
 
         </div>
 
-        {/* CTA Button */}
-        <div className="text-center mb-16">
-          <Button variant="premium" className="h-14 px-10 text-sm font-bold tracking-[0.2em] uppercase rounded-full shadow-lg hover:shadow-yellow-500/20 hover:scale-105 transition-all" asChild>
-            <Link href="/gold-rate-jaunpur" className="flex items-center gap-2">
-              Check Live Gold Rate <ChevronRight size={18} />
-            </Link>
-          </Button>
-        </div>
 
-        {/* SEO Content Block */}
-        <div className="max-w-4xl mx-auto bg-slate-50/50 rounded-3xl p-8 md:p-12 border border-slate-100 text-center space-y-6">
-          <h3 className="text-xl md:text-2xl font-serif font-bold text-slate-800">
-            Trusted Gold Price Updates in Jaunpur
-          </h3>
-          <p className="text-slate-600 leading-relaxed font-light text-sm md:text-base">
-            Stay informed with the most accurate <Link href="/gold-rate-jaunpur" className="text-yellow-700 font-medium hover:underline">today gold rate in Jaunpur</Link>. 
-            Whether you are planning to invest in the <Link href="/gold-rate-jaunpur" className="text-yellow-700 font-medium hover:underline">live gold price</Link> or looking for the finest craftsmanship for your next celebration, VCJ Jewellers provides transparent pricing. 
-            We update the <Link href="/gold-rate-jaunpur" className="text-yellow-700 font-medium hover:underline">22K gold rate jaunpur</Link> and <Link href="/gold-rate-jaunpur" className="text-yellow-700 font-medium hover:underline">24K gold price jaunpur</Link> daily to ensure you get the best value for your trust. Visit our showroom to explore pure, BIS Hallmarked jewellery at the current <Link href="/gold-rate-jaunpur" className="text-yellow-700 font-medium hover:underline">gold rate jaunpur</Link>.
-          </p>
-        </div>
 
       </div>
     </section>
