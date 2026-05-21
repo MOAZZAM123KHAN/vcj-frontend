@@ -1,6 +1,6 @@
 'use client';
 
-import { Phone, MessageCircle } from 'lucide-react';
+import { Phone, MessageCircle, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 
 export function FloatingButtons() {
@@ -10,6 +10,20 @@ export function FloatingButtons() {
 
   return (
     <div className="fixed bottom-6 right-6 z-50 flex flex-col gap-4">
+      {/* Live Gold Rate Button */}
+      <Link
+        href="/gold-rate-jaunpur"
+        className="w-14 h-14 bg-gradient-to-r from-yellow-600 to-yellow-500 hover:from-yellow-500 hover:to-yellow-400 text-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 active:scale-95 group relative border border-white/20"
+        aria-label="Live Gold Rate"
+      >
+        <span className="absolute inset-0 rounded-full bg-yellow-500 animate-ping opacity-20"></span>
+        <TrendingUp className="w-6 h-6 z-10" />
+        {/* Tooltip */}
+        <span className="absolute right-full mr-4 bg-gray-900 text-white text-xs px-3 py-1.5 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap shadow-lg">
+          Live Gold Rate
+        </span>
+      </Link>
+
       {/* Call Button */}
       <Link
         href={callUrl}

@@ -231,7 +231,7 @@ export function Header() {
 
                         {/* Desktop Nav */}
                         <nav className="hidden xl:flex items-center gap-10 text-[12px] font-semibold tracking-[0.2em] uppercase text-slate-600">
-                            {['Collections', 'Gallery', 'Story'].map((item) => (
+                            {['Today Gold Rate', 'Collections', 'Gallery', 'Story'].map((item) => (
                                 <Link
                                     key={item}
                                     href={
@@ -239,7 +239,9 @@ export function Header() {
                                             ? '/about'
                                             : item === 'Collections'
                                                 ? '/products'
-                                                : `/${item.toLowerCase()}`
+                                                : item === 'Today Gold Rate'
+                                                    ? '/gold-rate-jaunpur'
+                                                    : `/${item.toLowerCase()}`
                                     }
                                     className="hover:text-yellow-700 transition-colors"
                                 >
@@ -287,6 +289,7 @@ export function Header() {
 
                             {[
                                 { name: 'Home', link: '/' },
+                                { name: 'Today Gold Rate', link: '/gold-rate-jaunpur' },
                                 { name: 'Our Collections', link: '/products' },
                                 { name: 'Exclusive Gallery', link: '/gallery' },
                                 { name: 'Our Heritage', link: '/about' },
