@@ -250,6 +250,15 @@ export function Header() {
                             ))}
                         </nav>
 
+                        {/* 3.5% Gold Offer Button */}
+                        <Button
+                            variant="default"
+                            className="h-9 sm:h-11 px-3 sm:px-6 rounded-full text-[10px] sm:text-[12px] font-semibold tracking-[0.15em] uppercase shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 bg-yellow-600 hover:bg-yellow-700 text-white border-none"
+                            asChild
+                        >
+                            <Link href="/gold-offer/making-charge">3.5% Gold Offer</Link>
+                        </Button>
+
                         {/* Book Visit Button */}
                         <Button
                             variant="premium"
@@ -290,6 +299,7 @@ export function Header() {
                             {[
                                 { name: 'Home', link: '/' },
                                 { name: 'Today Gold Rate', link: '/gold-rate-jaunpur' },
+                                { name: '3.5% Gold Offer', link: '/gold-offer/making-charge' },
                                 { name: 'Our Collections', link: '/products' },
                                 { name: 'Exclusive Gallery', link: '/gallery' },
                                 { name: 'Our Heritage', link: '/about' },

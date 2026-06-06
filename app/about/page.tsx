@@ -142,11 +142,11 @@ export default function AboutPage() {
                     <div className="container mx-auto px-4">
                         <div className="max-w-3xl mx-auto text-center space-y-6 md:space-y-8">
                             <p className="text-xl md:text-2xl font-serif text-slate-800 leading-relaxed italic text-balance">
-                                "At VCJ, we combine traditional artistry with contemporary style, offering jewelry that celebrates life’s most meaningful moments—crafted with care, and backed by generations of trust."
+                                &ldquo;At VCJ, we combine traditional artistry with contemporary style, offering jewelry that celebrates life&rsquo;s most meaningful moments—crafted with care, and backed by generations of trust.&rdquo;
                             </p>
                             <div className="w-24 h-px bg-yellow-500 mx-auto" />
                             <p className="text-base md:text-lg text-slate-600 leading-relaxed px-4">
-                                We invite you to experience the story, the service, and the sparkle that make VCJ more than just a jewelry brand.
+                                We invite you to experience the story, the service, and the sparkle that make VCJ more than just a jewelry brand. Don&apos;t forget to take advantage of our current <Link href="/gold-offer/making-charge" className="text-yellow-700 font-semibold underline hover:text-yellow-800">Gold Jewellery Making Charges Offer</Link>.
                             </p>
                             <div className="pt-4 md:pt-8 w-full flex justify-center">
                                 <Link href="/contact" className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-slate-900 text-white px-8 py-4 rounded-full hover:bg-yellow-600 transition-colors shadow-lg">

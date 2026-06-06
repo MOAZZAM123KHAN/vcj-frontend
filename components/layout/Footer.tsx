@@ -31,6 +31,7 @@ export function Footer() {
                         <h4 className="font-serif text-xl font-bold text-white mb-8">The Experience</h4>
                         <ul className="space-y-4 text-[11px] font-bold tracking-widest uppercase text-slate-500">
                             <li><Link href="/products" className="hover:text-yellow-600 transition-colors">Collections</Link></li>
+                            <li><Link href="/gold-offer/making-charge" className="hover:text-yellow-600 transition-colors">Gold Jewellery Offer</Link></li>
                             <li><Link href="/offers/rate-booking" className="hover:text-yellow-600 transition-colors">Price Booking</Link></li>
                             <li><Link href="/offers/emi-scheme" className="hover:text-yellow-600 transition-colors">Savings Schemes</Link></li>
                             <li><Link href="/gallery" className="hover:text-yellow-600 transition-colors">Curated Lookbook</Link></li>

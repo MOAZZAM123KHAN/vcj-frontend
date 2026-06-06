@@ -3,6 +3,7 @@ import { IProduct } from '@/interfaces';
 import { Header } from '@/components/layout/Header';
 import { Footer } from '@/components/layout/Footer';
 import { ProductListContent } from '@/components/products/ProductListContent';
+import Link from 'next/link';
 
 export const metadata = {
     title: 'Jewellery Collection | VCJ Jewellers',
@@ -38,7 +39,7 @@ export default async function ProductsPage() {
                             Handcrafted <span className="italic text-yellow-500/90">Radiance</span>
                         </h1>
                         <p className="text-slate-100 max-w-2xl mx-auto text-lg md:text-xl font-light italic opacity-90 leading-relaxed drop-shadow-lg">
-                            Where every piece tells a story of tradition, purity, and timeless elegance.
+                            Where every piece tells a story of tradition, purity, and timeless elegance. View our limited-time <Link href="/gold-offer/making-charge" className="text-yellow-500 underline hover:text-yellow-400 font-semibold">Gold Jewellery Offer</Link> on selected items.
                         </p>
                     </div>
                 </div>

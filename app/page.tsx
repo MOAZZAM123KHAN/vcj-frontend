@@ -13,6 +13,7 @@ import { HomeTestimonialSection } from '@/components/home/HomeTestimonialSection
 import { FloatingButtons } from '@/components/home/FloatingButtons';
 import TrustBar from "@/components/TrustBar";
 import { HomeGoldRateSection } from '@/components/home/HomeGoldRateSection';
+import { BUSINESS_INFO } from '@/data/business';
 
 export default async function Home() {
   const businessSchema = getLocalBusinessSchema();
@@ -25,6 +26,41 @@ export default async function Home() {
       <Header />
       <main className="flex-1">
         <HeroCarousel />
+
+        {/* ===== PROMOTIONAL BANNER SECTION ===== */}
+        <section className="bg-slate-900 py-10 md:py-14 border-b border-yellow-500/20 relative overflow-hidden">
+          <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_center,rgba(234,179,8,0.3)_0%,transparent_80%)] pointer-events-none" />
+          <div className="container mx-auto px-4 max-w-5xl relative z-10">
+            <div className="bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 border border-yellow-500/25 p-8 md:p-10 rounded-2xl shadow-2xl flex flex-col md:flex-row items-center justify-between gap-8">
+              <div className="space-y-4 max-w-xl text-center md:text-left">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-yellow-500/10 text-yellow-500 text-xs font-bold tracking-wider uppercase border border-yellow-500/20">
+                  🔥 Limited Time Offer
+                </span>
+                <h2 className="text-2xl sm:text-3xl font-serif font-bold text-white leading-snug">
+                  Gold Jewellery Making Charges <span className="text-yellow-500">Only 3.5%</span>
+                </h2>
+                <p className="text-slate-400 text-sm leading-relaxed">
+                  Enjoy exclusive making charges starting from only 3.5% on selected gold jewellery collections. Offer valid till 30 June.
+                </p>
+                {/* Countdown Urgency Notice */}
+                <div className="flex items-center justify-center md:justify-start gap-4 pt-1">
+                  <span className="text-yellow-600 font-serif text-xs font-semibold tracking-wider animate-pulse flex items-center gap-1">
+                    ⏳ Limited availability • Offer Ends 30 June
+                  </span>
+                </div>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-4 shrink-0 w-full md:w-auto">
+                <Button variant="premium" className="h-12 px-8 rounded-full text-xs font-bold tracking-widest uppercase shadow-lg hover:scale-105 transition-all w-full sm:w-auto" asChild>
+                  <Link href="/gold-offer/making-charge">Explore Offer</Link>
+                </Button>
+                <Button variant="outline" className="h-12 px-8 rounded-full text-xs font-bold tracking-widest uppercase border-white/20 text-white hover:bg-white/10 transition-all w-full sm:w-auto" asChild>
+                  <a href={`tel:${BUSINESS_INFO.contact.phone}`}>Call Now</a>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <TrustBar />
 
         {/* Gold Rate Section */}
@@ -61,7 +97,9 @@ export default async function Home() {
                 </div>
                 <div className="space-y-2 md:space-y-3">
                   <h3 className="text-xl md:text-2xl font-serif font-bold text-slate-900">Certified Purity</h3>
-                  <p className="text-slate-500 text-sm leading-relaxed max-w-xs mx-auto">Every piece is BIS Hallmarked. We offer free purity testing on our advanced Karatometer for your absolute peace of mind.</p>
+                  <p className="text-slate-500 text-sm leading-relaxed max-w-xs mx-auto">
+                    Every piece is BIS Hallmarked. We offer free purity testing on our advanced Karatometer for absolute peace of mind. Also avail our <Link href="/gold-offer/making-charge" className="text-yellow-700 font-semibold underline hover:text-yellow-800">3.5% Gold Making Charges</Link> offer.
+                  </p>
                 </div>
               </div>
 
@@ -193,6 +231,18 @@ export default async function Home() {
       </main>
       <Footer />
       <FloatingButtons />
+
+      {/* Mobile-only Sticky Gold Offer Pill */}
+      <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 sm:hidden">
+        <Link
+          href="/gold-offer/making-charge"
+          className="bg-slate-900 text-yellow-500 border border-yellow-500/30 px-6 py-3 rounded-full text-xs font-bold tracking-widest uppercase shadow-2xl flex items-center gap-2 whitespace-nowrap active:scale-95 transition-all"
+        >
+          <span className="w-2.5 h-2.5 rounded-full bg-yellow-500 animate-ping absolute" />
+          <span className="w-2.5 h-2.5 rounded-full bg-yellow-500 relative" />
+          Gold Offer 3.5%
+        </Link>
+      </div>
     </>
   );
 }
