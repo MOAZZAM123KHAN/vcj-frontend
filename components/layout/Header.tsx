@@ -1,157 +1,14 @@
-// 'use client';
-
-// import Link from 'next/link';
-// import { useState, Suspense } from 'react';
-// import { Menu, X, Phone, MapPin, Search, ChevronRight } from 'lucide-react';
-// import { motion, AnimatePresence } from 'framer-motion';
-// import { Button } from '@/components/ui/button';
-// import { BUSINESS_INFO } from '@/data/business';
-// import { ProductSearch } from './ProductSearch';
-// import { Logo } from '@/components/logo/Logo';
-
-// export function Header() {
-//     const [isOpen, setIsOpen] = useState(false);
-
-//     return (
-//         <header className="sticky top-0 z-50 w-full transition-all duration-300">
-//             {/* Top Bar - More elegant and minimal */}
-//             <div className="bg-[#1a1a1a] text-white py-2 px-4 border-b border-white/10">
-//                 <div className="container mx-auto flex justify-between items-center text-[9px] md:text-[11px] font-medium tracking-[0.1em] md:tracking-[0.15em] uppercase">
-//                     <div className="flex gap-4 md:gap-6">
-//                         <a href={`tel:${BUSINESS_INFO.contact.phone}`} className="flex items-center gap-1.5 hover:text-yellow-400 transition-colors">
-//                             <Phone size={10} className="text-yellow-500 md:w-3 md:h-3" /> {BUSINESS_INFO.contact.displayPhone}
-//                         </a>
-//                         <span className="hidden sm:flex items-center gap-1.5">
-//                             <MapPin size={10} className="text-yellow-500 md:w-3 md:h-3" /> Nakhas, Jaunpur
-//                         </span>
-//                     </div>
-//                     <div className="flex gap-4 md:gap-6 items-center">
-//                         <Link href="/about" className="hover:text-yellow-400 transition-colors">Legacy</Link>
-//                         <Link href="/contact" className="hover:text-yellow-400 transition-colors">Contact</Link>
-//                         <div className="h-3 w-[1px] bg-white/20 mx-1 hidden xs:block" />
-//                         <span className="text-yellow-500 hidden xs:block">100% Purity</span>
-//                     </div>
-//                 </div>
-//             </div>
-
-//             Main Navigation - Balanced and Spacious
-//             <div className="bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm relative z-40">
-//                 <div className="container mx-auto px-4 lg:px-10 py-4 flex items-center justify-between gap-4 md:gap-12">
-//                     {/* Search - Left on Desktop */}
-//                     <div className="hidden lg:flex flex-1 max-w-[320px]">
-//                         <Suspense fallback={<div className="w-full h-11 bg-slate-50 rounded-full animate-pulse" />}>
-//                             <ProductSearch />
-//                         </Suspense>
-//                     </div>
-
-//                     {/* Logo - Centered and Prominent */}
-//                     <div className="flex shrink-0 px-2">
-//                         <Link href="/" className="group transition-transform hover:scale-105 duration-500">
-//                             <Logo className="scale-85 md:scale-95 lg:scale-110 origin-center" />
-//                         </Link>
-//                     </div>
-
-
-
-//                     {/* Nav Links + Icons - Right */}
-//                     <div className="flex-1 flex items-center justify-end gap-8 md:gap-12">
-//                         <nav className="hidden xl:flex items-center gap-12">
-//                             {['Collections', 'Gallery', 'Story'].map((item) => (
-//                                 <Link
-//                                     key={item}
-//                                     href={item === 'Story' ? '/about' : item === 'Collections' ? '/products' : `/${item.toLowerCase()}`}
-//                                     className="text-[12px] font-black tracking-[0.25em] uppercase text-slate-500 hover:text-yellow-700 transition-all relative group/nav"
-//                                 >
-//                                     {item}
-//                                     <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-0 h-[2px] bg-yellow-600 transition-all group-hover/nav:w-8" />
-//                                 </Link>
-//                             ))}
-//                         </nav>
-
-//                         {/* <div className="flex items-center gap-4">
-//                             <Button variant="premium" className="hidden sm:flex h-12 px-8 rounded-none text-[12px] font-black tracking-[0.15em] uppercase shadow-lg hover:shadow-yellow-500/20 hover:scale-105 transition-all" asChild>
-//                                 <Link href="/contact">Book Visit</Link>
-//                             </Button> */}
-
-//                         <div className="flex items-center gap-4">
-//                             <Button
-//                                 variant="premium"
-//                                 className="hidden sm:flex h-12 px-8 rounded-full text-[12px] font-semibold tracking-[0.15em] uppercase shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
-//                                 asChild
-//                             >
-//                                 <Link href="/contact">Book Visit</Link>
-//                             </Button>
-
-
-//                             {/* Mobile Toggle */}
-//                             <button
-//                                 className="xl:hidden p-2 text-slate-800 hover:text-yellow-700 transition-colors focus:outline-none"
-//                                 onClick={() => setIsOpen(!isOpen)}
-//                                 aria-label="Toggle menu"
-//                             >
-//                                 {isOpen ? <X size={28} /> : <Menu size={28} />}
-//                             </button>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-
-//             {/* Mobile Nav - Elegant Overlay */}
-//             <AnimatePresence>
-//                 {isOpen && (
-//                     <motion.div
-//                         initial={{ opacity: 0, y: -20 }}
-//                         animate={{ opacity: 1, y: 0 }}
-//                         exit={{ opacity: 0, y: -20 }}
-//                         className="xl:hidden absolute top-full left-0 w-full bg-white border-b border-slate-200 shadow-2xl z-40 p-6"
-//                     >
-//                         <div className="mb-8">
-//                             <Suspense fallback={<div className="w-full h-12 bg-slate-50 rounded-full animate-pulse" />}>
-//                                 <ProductSearch />
-//                             </Suspense>
-//                         </div>
-//                         <nav className="flex flex-col gap-6">
-//                             {[
-//                                 { name: 'Home', link: '/' },
-//                                 { name: 'Our Collections', link: '/products' },
-//                                 { name: 'Exclusive Gallery', link: '/gallery' },
-//                                 { name: 'Our Heritage', link: '/about' },
-//                                 { name: 'Contact Us', link: '/contact' }
-//                             ].map((item) => (
-//                                 <Link
-//                                     key={item.name}
-//                                     href={item.link}
-//                                     className="text-lg font-serif font-bold text-slate-800 hover:text-yellow-600 border-b border-slate-50 pb-2 flex justify-between items-center"
-//                                     onClick={() => setIsOpen(false)}
-//                                 >
-//                                     {item.name}
-//                                     <ChevronRight size={18} className="text-yellow-600" />
-//                                 </Link>
-//                             ))}
-//                             <Button className="w-full h-14 rounded-none text-xs font-bold tracking-[0.2em] uppercase bg-slate-900 border-none mt-4">
-//                                 <a href={`tel:${BUSINESS_INFO.contact.phone}`} className="flex items-center gap-2">
-//                                     <Phone size={16} /> Call Showroom
-//                                 </a>
-//                             </Button>
-//                         </nav>
-//                     </motion.div>
-//                 )}
-//             </AnimatePresence>
-//         </header >
-//     );
-// }
-
-
 'use client';
 
 import Link from 'next/link';
 import { useState, Suspense } from 'react';
-import { Menu, X, Phone, MapPin, ChevronRight } from 'lucide-react';
+import { Menu, X, Phone, ChevronRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { BUSINESS_INFO } from '@/data/business';
 import { ProductSearch } from './ProductSearch';
 import { Logo } from '@/components/logo/Logo';
+import { GoldRateTicker } from './GoldRateTicker';
 
 export function Header() {
     const [isOpen, setIsOpen] = useState(false);
@@ -173,104 +30,100 @@ export function Header() {
         setMessage('');
     };
 
+    const navItems = [
+        { name: 'Gold Jewellery', link: '/gold-jewellery-jaunpur' },
+        { name: 'Bridal Jewellery', link: '/bridal-jewellery-jaunpur' },
+        { name: 'Diamond Jewellery', link: '/diamond-jewellery-jaunpur' },
+        { name: 'Gold Rate', link: '/gold-rate-jaunpur' },
+        { name: 'Gallery', link: '/gallery' },
+        { name: 'About VCJ', link: '/about' }
+    ];
+
+    const mobileNavItems = [
+        { name: 'Home', link: '/' },
+        { name: 'Gold Jewellery', link: '/gold-jewellery-jaunpur' },
+        { name: 'Bridal Jewellery', link: '/bridal-jewellery-jaunpur' },
+        { name: 'Diamond Jewellery', link: '/diamond-jewellery-jaunpur' },
+        { name: 'Gold Rate', link: '/gold-rate-jaunpur' },
+        { name: 'Gallery', link: '/gallery' },
+        { name: 'About VCJ', link: '/about' },
+        { name: 'Contact Us', link: '/contact' }
+    ];
+
     return (
         <header className="sticky top-0 z-50 w-full">
 
             {/* ===== Top Bar ===== */}
-            <div className="bg-[#1a1a1a] text-white py-1 px-4 border-b border-white/10">
-                <div className="container mx-auto flex justify-between items-center text-[10px] md:text-[11px] font-medium tracking-[0.15em] uppercase">
+            <div className="bg-[#151515] text-white/90 py-2.5 px-4 border-b border-yellow-500/15">
+                <div className="container mx-auto flex flex-col md:flex-row justify-between items-center text-[10px] font-medium tracking-[0.18em] uppercase gap-2 md:gap-0">
+                    
+                    {/* LEFT - Phone */}
+                    <a
+                        href={`tel:${BUSINESS_INFO.contact.phone}`}
+                        className="flex items-center gap-2 hover:text-yellow-500 transition-colors duration-200"
+                    >
+                        <Phone size={11} className="text-yellow-500" />
+                        {BUSINESS_INFO.contact.displayPhone}
+                    </a>
 
-                    <div className="flex gap-6">
-                        <a
-                            href={`tel:${BUSINESS_INFO.contact.phone}`}
-                            className="flex items-center gap-2 hover:text-yellow-400 transition-colors"
-                        >
-                            <Phone size={12} className="text-yellow-500" />
-                            {BUSINESS_INFO.contact.displayPhone}
-                        </a>
-
-                        <span className="hidden sm:flex items-center gap-2 text-white/70">
-                            <MapPin size={12} className="text-yellow-500" />
-                            Nakhas, Jaunpur
-                        </span>
+                    {/* CENTER - Purity Signals */}
+                    <div className="hidden sm:flex items-center gap-4 text-slate-300">
+                        <span>BIS Hallmarked Gold Jewellery</span>
+                        <span className="w-1 h-1 rounded-full bg-yellow-500/60" />
+                        <span>Trusted By Generations</span>
                     </div>
 
-                    <div className="hidden md:flex gap-6 items-center">
-                        <Link href="/about" className="hover:text-yellow-400 transition-colors">
-                            Legacy
-                        </Link>
-                        <Link href="/contact" className="hover:text-yellow-400 transition-colors">
-                            Contact
-                        </Link>
-                        <span className="text-yellow-500">100% Purity</span>
+                    {/* RIGHT - SEO Authority Text */}
+                    <div className="text-yellow-500 font-semibold tracking-[0.18em] flex items-center gap-1.5">
+                        Best Jewellery Shop In Jaunpur
                     </div>
 
                 </div>
             </div>
 
             {/* ===== Main Navigation ===== */}
-            <div className="bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm">
-                <div className="container mx-auto px-4 lg:px-10 py-2 flex items-center justify-between gap-8">
+            <div className="bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-sm relative z-40">
+                <div className="container mx-auto px-4 lg:px-10 py-3 flex items-center justify-between gap-6">
 
-                    {/* LEFT - Logo */}
+                    {/* LEFT - Logo + Heritage Branding */}
                     <div className="flex items-center shrink-0">
-                        <Link href="/" className="transition-transform hover:scale-105 duration-300">
-                            <Logo className="h-full w-auto" />
+                        <Link href="/" className="transition-transform hover:scale-[1.02] duration-300 flex items-center gap-3">
+                            <Logo iconOnly={true} className="h-10 w-10 md:h-12 md:w-12 shrink-0 min-w-fit" />
+                            <div className="hidden md:flex flex-col border-l border-yellow-500/30 pl-3 py-0.5 text-left">
+                                <span className="font-serif text-[10px] font-bold text-yellow-600 tracking-[0.22em] uppercase leading-none mb-1">Since 1960</span>
+                                <span className="font-sans text-[8px] font-semibold text-slate-400 tracking-[0.15em] uppercase leading-none">Trusted By Generations</span>
+                            </div>
                         </Link>
                     </div>
 
-                    {/* CENTER - Search */}
-                    <div className="hidden lg:flex flex-1 max-w-md">
-                        <Suspense fallback={<div className="w-full h-11 bg-slate-50 rounded-full animate-pulse" />}>
-                            <ProductSearch />
-                        </Suspense>
-                    </div>
+                    {/* CENTER - Desktop Nav Links */}
+                    <nav className="hidden xl:flex items-center justify-center flex-1 gap-8 text-[11px] font-bold tracking-[0.25em] uppercase text-slate-600">
+                        {navItems.map((item) => (
+                            <Link
+                                key={item.name}
+                                href={item.link}
+                                className="hover:text-yellow-600 transition-colors duration-300 relative py-2 group/nav-link"
+                            >
+                                {item.name}
+                                <span className="absolute bottom-0 left-0 w-0 h-[1.5px] bg-yellow-600 transition-all duration-300 group-hover/nav-link:w-full" />
+                            </Link>
+                        ))}
+                    </nav>
 
-                    {/* RIGHT - Nav + Button */}
-                    <div className="flex items-center gap-8 shrink-0">
-
-                        {/* Desktop Nav */}
-                        <nav className="hidden xl:flex items-center gap-10 text-[12px] font-semibold tracking-[0.2em] uppercase text-slate-600">
-                            {['Today Gold Rate', 'Collections', 'Gallery', 'Story'].map((item) => (
-                                <Link
-                                    key={item}
-                                    href={
-                                        item === 'Story'
-                                            ? '/about'
-                                            : item === 'Collections'
-                                                ? '/products'
-                                                : item === 'Today Gold Rate'
-                                                    ? '/gold-rate-jaunpur'
-                                                    : `/${item.toLowerCase()}`
-                                    }
-                                    className="hover:text-yellow-700 transition-colors"
-                                >
-                                    {item}
-                                </Link>
-                            ))}
-                        </nav>
-
-                        {/* 3.5% Gold Offer Button */}
+                    {/* RIGHT - CTA Button & Mobile Toggle */}
+                    <div className="flex items-center gap-4 shrink-0">
+                        
+                        {/* Visit Showroom CTA Button */}
                         <Button
-                            variant="default"
-                            className="h-9 sm:h-11 px-3 sm:px-6 rounded-full text-[10px] sm:text-[12px] font-semibold tracking-[0.15em] uppercase shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300 bg-yellow-600 hover:bg-yellow-700 text-white border-none"
-                            asChild
-                        >
-                            <Link href="/gold-offer/making-charge">3.5% Gold Offer</Link>
-                        </Button>
-
-                        {/* Book Visit Button */}
-                        <Button
-                            variant="premium"
-                            className="hidden sm:flex h-11 px-8 rounded-full text-[12px] font-semibold tracking-[0.15em] uppercase shadow-md hover:shadow-lg hover:scale-105 transition-all duration-300"
+                            className="hidden sm:flex h-10 px-6 rounded-full text-[10px] font-bold tracking-[0.15em] uppercase transition-all duration-300 bg-gradient-to-r from-yellow-600 via-yellow-500 to-amber-600 hover:from-yellow-500 hover:to-amber-500 text-slate-900 border-none shadow-[0_4px_15px_rgba(202,138,4,0.15)] hover:shadow-[0_8px_25px_rgba(202,138,4,0.25)] hover:-translate-y-0.5"
                             onClick={() => setIsModalOpen(true)}
                         >
-                            Book Visit
+                            Visit Showroom
                         </Button>
 
                         {/* Mobile Toggle */}
                         <button
-                            className="xl:hidden p-2 text-slate-800 hover:text-yellow-700 transition-colors"
+                            className="xl:hidden p-2 text-slate-800 hover:text-yellow-700 transition-colors focus:outline-none"
                             onClick={() => setIsOpen(!isOpen)}
                             aria-label="Toggle menu"
                         >
@@ -281,6 +134,9 @@ export function Header() {
                 </div>
             </div>
 
+            {/* ===== Gold Rate Information Strip ===== */}
+            <GoldRateTicker />
+
             {/* ===== Mobile Menu ===== */}
             <AnimatePresence>
                 {isOpen && (
@@ -288,7 +144,7 @@ export function Header() {
                         initial={{ opacity: 0, y: -15 }}
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -15 }}
-                        className="xl:hidden bg-white border-b border-slate-200 shadow-2xl"
+                        className="xl:hidden bg-white border-b border-slate-200 shadow-2xl relative z-30"
                     >
                         <div className="p-6 flex flex-col gap-6">
 
@@ -296,28 +152,22 @@ export function Header() {
                                 <ProductSearch />
                             </Suspense>
 
-                            {[
-                                { name: 'Home', link: '/' },
-                                { name: 'Today Gold Rate', link: '/gold-rate-jaunpur' },
-                                { name: '3.5% Gold Offer', link: '/gold-offer/making-charge' },
-                                { name: 'Our Collections', link: '/products' },
-                                { name: 'Exclusive Gallery', link: '/gallery' },
-                                { name: 'Our Heritage', link: '/about' },
-                                { name: 'Contact Us', link: '/contact' }
-                            ].map((item) => (
-                                <Link
-                                    key={item.name}
-                                    href={item.link}
-                                    onClick={() => setIsOpen(false)}
-                                    className="flex justify-between items-center text-lg font-medium text-slate-800 hover:text-yellow-600 border-b border-slate-100 pb-3"
-                                >
-                                    {item.name}
-                                    <ChevronRight size={18} className="text-yellow-600" />
-                                </Link>
-                            ))}
+                            <nav className="flex flex-col gap-1">
+                                {mobileNavItems.map((item) => (
+                                    <Link
+                                        key={item.name}
+                                        href={item.link}
+                                        onClick={() => setIsOpen(false)}
+                                        className="flex justify-between items-center text-base font-medium text-slate-800 hover:text-yellow-600 border-b border-slate-100 py-3 transition-colors duration-200"
+                                    >
+                                        {item.name}
+                                        <ChevronRight size={18} className="text-yellow-600" />
+                                    </Link>
+                                ))}
+                            </nav>
 
                             <Button
-                                className="mt-4 rounded-full bg-black text-white py-3"
+                                className="mt-4 rounded-full bg-black hover:bg-slate-800 text-white py-3 text-xs font-bold tracking-widest uppercase transition-colors"
                                 onClick={() => {
                                     setIsOpen(false);
                                     setIsModalOpen(true);
@@ -325,7 +175,7 @@ export function Header() {
                             >
                                 <span className="flex items-center justify-center gap-2">
                                     <Phone size={16} />
-                                    Book Visit
+                                    Visit Showroom
                                 </span>
                             </Button>
 
@@ -354,7 +204,8 @@ export function Header() {
                         >
                             <button
                                 onClick={() => setIsModalOpen(false)}
-                                className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors"
+                                className="absolute top-4 right-4 text-slate-400 hover:text-white transition-colors focus:outline-none"
+                                aria-label="Close modal"
                             >
                                 <X size={24} />
                             </button>
@@ -363,7 +214,7 @@ export function Header() {
                                 <h3 className="text-2xl font-serif font-bold text-white mb-2">
                                     WhatsApp Order Enquiry
                                 </h3>
-                                <p className="text-slate-400 text-sm">
+                                <p className="text-slate-400 text-sm font-light">
                                     Share your details and continue directly in WhatsApp.
                                 </p>
                             </div>

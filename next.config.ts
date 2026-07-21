@@ -22,6 +22,38 @@ const nextConfig: NextConfig = {
         source: '/collections',
         destination: '/products',
       },
+      {
+        source: '/gold-jewellery-jaunpur',
+        destination: '/products?material=Gold',
+      },
+      {
+        source: '/bridal-jewellery-jaunpur',
+        destination: '/products?occasion=Bridal',
+      },
+      {
+        source: '/diamond-jewellery-jaunpur',
+        destination: '/products?material=Diamond',
+      },
+      {
+        source: '/mangalsutra-collection-jaunpur',
+        destination: '/products?category=Mangalsutra',
+      },
+      {
+        source: '/gold-bangles-jaunpur',
+        destination: '/products?category=Bangles&material=Gold',
+      },
+      {
+        source: '/earrings-collection-jaunpur',
+        destination: '/products?category=Earrings',
+      },
+      {
+        source: '/gold-rings-jaunpur',
+        destination: '/products?category=Rings&material=Gold',
+      },
+      {
+        source: '/silver-jewellery-jaunpur',
+        destination: '/products?material=Silver',
+      },
     ];
   },
   async redirects() {

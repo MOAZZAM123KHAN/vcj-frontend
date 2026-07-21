@@ -10,15 +10,21 @@ import { X } from 'lucide-react';
 
 interface ProductListContentProps {
     initialProducts: IProduct[];
+    searchParams?: {
+        category?: string;
+        material?: string;
+        gender?: string;
+        occasion?: string;
+    };
 }
 
-export function ProductListContent({ initialProducts }: ProductListContentProps) {
+export function ProductListContent({ initialProducts, searchParams }: ProductListContentProps) {
     // STEP 3 — Add Filter State
     const [filters, setFilters] = useState({
-        category: "all",
-        material: "all",
-        gender: "all",
-        occasion: "all"
+        category: searchParams?.category || "all",
+        material: searchParams?.material || "all",
+        gender: searchParams?.gender || "all",
+        occasion: searchParams?.occasion || "all"
     });
 
     const clearFilters = () => {
