@@ -12,7 +12,13 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogListingPage() {
-    const { data: blogPosts } = await getBlogs();
+    let blogPosts: any[] = [];
+    try {
+        const res = await getBlogs();
+        blogPosts = res?.data || [];
+    } catch (e) {
+        // Gracefully handle build-time prerendering when API is not running
+    }
 
     return (
         <>

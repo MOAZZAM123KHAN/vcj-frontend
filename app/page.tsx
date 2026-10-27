@@ -170,26 +170,31 @@ export default async function Home() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-6 md:gap-8 items-center pt-4">
-                <div className="flex items-center gap-4 text-left group w-full sm:w-auto">
+                <Link href="/jewellery-shop-near-me-jaunpur" className="flex items-center gap-4 text-left group w-full sm:w-auto hover:opacity-90 transition-opacity">
                   <div className="w-12 h-12 rounded-full border border-yellow-200 flex items-center justify-center text-yellow-700 transition-colors group-hover:bg-yellow-100 shrink-0"><MapPin size={24} strokeWidth={1.5} /></div>
                   <div>
                     <div className="text-[10px] text-slate-400 font-bold tracking-widest uppercase mb-1">Our Location</div>
-                    <div className="font-serif font-bold text-slate-800">Nakhas, Jaunpur</div>
+                    <div className="font-serif font-bold text-slate-800 group-hover:text-yellow-700 transition-colors">Nakhas, Jaunpur</div>
                   </div>
-                </div>
+                </Link>
                 <div className="w-px h-10 bg-slate-200 hidden sm:block" />
-                <div className="flex items-center gap-4 text-left group w-full sm:w-auto">
+                <a href="tel:+916390901876" className="flex items-center gap-4 text-left group w-full sm:w-auto hover:opacity-90 transition-opacity">
                   <div className="w-12 h-12 rounded-full border border-yellow-200 flex items-center justify-center text-yellow-700 transition-colors group-hover:bg-yellow-100 shrink-0"><Phone size={24} strokeWidth={1.5} /></div>
                   <div>
                     <div className="text-[10px] text-slate-400 font-bold tracking-widest uppercase mb-1">Personal Assistant</div>
-                    <div className="font-serif font-bold text-slate-800">+91 63909 01876</div>
+                    <div className="font-serif font-bold text-slate-800 group-hover:text-yellow-700 transition-colors">+91 63909 01876</div>
                   </div>
-                </div>
+                </a>
               </div>
 
-              <Button variant="premium" className="h-14 md:h-16 px-10 md:px-12 text-sm font-bold tracking-[0.2em] uppercase rounded-none mt-4 md:mt-8 shadow-xl w-full sm:w-auto" asChild>
-                <Link href="/contact">Schedule a Visit</Link>
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-4 md:mt-8 w-full sm:w-auto">
+                <Button variant="premium" className="h-14 md:h-16 px-8 md:px-10 text-sm font-bold tracking-[0.2em] uppercase rounded-none shadow-xl w-full sm:w-auto" asChild>
+                  <Link href="/jewellery-shop-near-me-jaunpur">Explore Showroom & Directions</Link>
+                </Button>
+                <Button variant="outline" className="h-14 md:h-16 px-8 md:px-10 text-sm font-bold tracking-[0.2em] uppercase border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white rounded-none w-full sm:w-auto" asChild>
+                  <Link href="/contact">Schedule a Visit</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </section>

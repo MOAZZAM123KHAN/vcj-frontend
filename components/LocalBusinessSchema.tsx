@@ -6,9 +6,29 @@ export default function LocalBusinessSchema() {
     "@type": "JewelryStore",
     "name": "VCJ Jewellers – Vimal Chhaganlal Jewellers",
     "url": "https://vcjjewellers.com",
-    "telephone": "+91-6390901876",
-    "address": "Sadbhavna Bridge Mod, Kachari Road, Nakhas, Jaunpur, Uttar Pradesh 222002",
-    "openingHours": "Mo-Su 09:00-22:00",
+    "telephone": "+916390901876",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Sadbhawana Pul Mod, Olandganj, Kachahari Road, Nakhas",
+      "addressLocality": "Jaunpur",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "222002",
+      "addressCountry": "IN"
+    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "10:00",
+        "closes": "21:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Sunday",
+        "opens": "11:00",
+        "closes": "19:00"
+      }
+    ],
     "priceRange": "₹₹₹"
   };
 

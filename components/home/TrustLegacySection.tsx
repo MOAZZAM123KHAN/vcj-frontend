@@ -29,20 +29,27 @@ export function TrustLegacySection() {
       "latitude": BUSINESS_INFO.geo.latitude,
       "longitude": BUSINESS_INFO.geo.longitude
     },
-    "openingHoursSpecification": {
-      "@type": "OpeningHoursSpecification",
-      "dayOfWeek": [
-        "Monday",
-        "Tuesday",
-        "Wednesday",
-        "Thursday",
-        "Friday",
-        "Saturday",
-        "Sunday"
-      ],
-      "opens": "09:00",
-      "closes": "22:00"
-    },
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday",
+          "Saturday"
+        ],
+        "opens": "10:00",
+        "closes": "21:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": "Sunday",
+        "opens": "11:00",
+        "closes": "19:00"
+      }
+    ],
     "sameAs": [
       BUSINESS_INFO.social.instagram,
       BUSINESS_INFO.social.facebook
@@ -123,13 +130,13 @@ export function TrustLegacySection() {
   ];
 
   const popularSearches = [
-    { label: "Best Jewellery Shop in Jaunpur", href: "/about" },
+    { label: "Best Jewellery Shop in Jaunpur", href: "/jewellery-shop-near-me-jaunpur" },
     { label: "Gold Jewellery Shop in Jaunpur", href: "/gold-jewellery-jaunpur" },
     { label: "Bridal Jewellery in Jaunpur", href: "/bridal-jewellery-jaunpur" },
     { label: "Diamond Jewellery in Jaunpur", href: "/diamond-jewellery-jaunpur" },
     { label: "Gold Bangles in Jaunpur", href: "/gold-bangles-jaunpur" },
     { label: "Mangalsutra Shop in Jaunpur", href: "/mangalsutra-collection-jaunpur" },
-    { label: "Jewellery Showroom Near Me", href: "/contact" },
+    { label: "Jewellery Showroom Near Me", href: "/jewellery-shop-near-me-jaunpur" },
     { label: "Gold Jewellery Near Me", href: "/products" }
   ];
 

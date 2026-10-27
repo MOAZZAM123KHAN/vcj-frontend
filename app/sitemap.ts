@@ -19,6 +19,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const staticEntries: MetadataRoute.Sitemap = [
     { url: 'https://vcjjewellers.com/', lastModified: new Date(), changeFrequency: 'daily', priority: 1.0 },
+    { url: 'https://vcjjewellers.com/jewellery-shop-near-me-jaunpur', lastModified: new Date(), changeFrequency: 'weekly', priority: 0.9 },
     { url: 'https://vcjjewellers.com/gold-rate-jaunpur', lastModified: new Date(), changeFrequency: 'daily', priority: 0.9 },
     { url: 'https://vcjjewellers.com/products', lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },
     { url: 'https://vcjjewellers.com/products?category=gold', lastModified: new Date(), changeFrequency: 'weekly', priority: 0.8 },

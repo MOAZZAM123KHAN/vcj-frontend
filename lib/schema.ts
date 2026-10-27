@@ -25,20 +25,27 @@ export function getLocalBusinessSchema() {
             "latitude": BUSINESS_INFO.geo.latitude,
             "longitude": BUSINESS_INFO.geo.longitude
         },
-        "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": [
-                "Monday",
-                "Tuesday",
-                "Wednesday",
-                "Thursday",
-                "Friday",
-                "Saturday",
-                "Sunday"
-            ],
-            "opens": "09:00",
-            "closes": "22:00"
-        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday",
+                    "Saturday"
+                ],
+                "opens": "10:00",
+                "closes": "21:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Sunday",
+                "opens": "11:00",
+                "closes": "19:00"
+            }
+        ],
         "priceRange": BUSINESS_INFO.priceRange,
         "sameAs": [
             BUSINESS_INFO.social.instagram,
