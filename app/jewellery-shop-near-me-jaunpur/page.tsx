@@ -798,6 +798,16 @@ export default function JewelleryShopNearMeJaunpur() {
                 </Link>
               </Button>
             </div>
+
+            <div className="pt-2">
+              <Link
+                href="/dhanteras-diwali-jewellery-jaunpur"
+                className="inline-flex items-center gap-2 text-xs font-bold text-yellow-800 hover:text-yellow-900 tracking-wider uppercase bg-yellow-100/80 hover:bg-yellow-200 px-4 py-2 rounded-full transition-colors"
+              >
+                <Sparkles size={14} className="text-yellow-600" />
+                Dhanteras &amp; Diwali Jewellery in Jaunpur <ArrowRight size={13} />
+              </Link>
+            </div>
           </div>
         </section>
 
